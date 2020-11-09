@@ -1,5 +1,5 @@
 # Programming Styles -- WiSe 20-21
----
+---------------
 
 # Minesweeper
 
@@ -46,6 +46,8 @@ A valid file defining a 3x3 board containing 2 mines might look like this:
 
 Valid boards must have more than one square, and do not contain only mines.
 
+The board configuration files must have the `.cfg` extension.
+
 
 ### Playing the game
 
@@ -64,7 +66,7 @@ A covered square is blank and "clickable", while an uncovered square is exposed.
 
 ### End of the Game
 
-A game ends when the player uncover all non-mine squares (win) or a mine is detonated (lost). Flagging all the mined squares is not required.
+A game ends when the player uncover all non-mine squares (win) or a mine is detonated (lost). Flagging all the mined squares is not required to finish the game; however, when the game is lost all the mines must be clearly shown on the board.
 
 ## The Text-based Graphical User Interface (GUI)
 The GUI of the game is made entirely by characters, like in very old games. This is mostly because it is easy to automatically test whether your implementation is correct or not. There are no colors, but you need to generate the right characters (see below).
@@ -94,6 +96,16 @@ In the above board, the mine is in position `(1,1)`, the `1` is in position `(1,
 
 > **NOTE**: The board above serves only as illustration, such a configuration would be not possible because a mine has been found.
 
+Here are some specifications of the boards:
+
+* The height of each square is 3 line
+* The width of each square is 3 chars
+* Nearby squares share borders
+* An uncovered square is "empty"
+* An flanges square contains a flag `¶`
+* Covered squares contain a shaded cell `▓` unless it contains a mine (`*`) or a digit
+* Each line is terminated by `\n` and there are no spaces before or after it
+
 ### The message banner
 During the game, Minesweeper might output messages to the player. For example, if the provided input is invalid, or the game is over. Messages are displayed inside the message banner, which is positioned below the board. 
 
@@ -117,7 +129,7 @@ An example of short message when the player wins the game is:
 ```
 └───┴───┴───┘[\n]
 ╔═══════════╗[\n]
-║You Win !  ║[\n]
+║You Won!   ║[\n]
 ╚═══════════╝[\n]
 ```
 
@@ -157,11 +169,24 @@ Putting the elements of the GUI all together results and assuming an 3x3 initial
 >
 ```
 
+### Extended ASCII
+
+Note that to generate the GUI you do not need necessary to use the extended ASCII characters if you can use other encodings.
+
+Please read this [StackOverflow question](https://stackoverflow.com/questions/22273046/how-to-print-the-extended-ascii-code-in-java-from-integer-value). 
+
 ## Processing User Inputs
 
-The player inputs three values at the time. The first two values identify a square while the last one, which can be either `R` (reveal) or `F` (flag), identifies the action. Values are separated by one or more spaces. 
-Spaces in front and in the tail of the inputs are valid.
-Inputs in a different format must be considered invalid.
+The player inputs three values at the time, and the program reacts to them  refreshing the GUI and potentially showing a message in the message banner.
+
+Inputs must follow the specified format to be considered valid. Invalid inputs are rejected by the system (i.e., they do not cause a change in the state of the board), but the system notifies the use about them.
+
+### Input format
+Valid inputs consist of three values separated by one or more spaces.
+
+The first two values identify a square in the board (target for the action) while the last input identifies the action to perform (i.e., reveal or flag).
+Spaces in front and in the back of the inputs does not matter.
+Any input with a different format is considered invalid and reported with the message: `The provided input is not valid!`
 
 Examples of valid inputs are:
 
@@ -173,25 +198,120 @@ Examples of valid inputs are:
 
 ` `` `` ``1`` ``1`` `` ``F`` `` `
 
-Examples of invalid inputs are:
+Examples of **invalid** inputs are:
 
-`1`` ``1`` ``1`` `` ``F`` `` `
+`1`` ``1`` ``1`` `` ``F`` `` ` (more than three inputs)
 
-`111`` `` ``F`` `` `
+`111`` `` ``F`` `` ` (only two inputs)
 
-` ``111F`` `
+` ``111F`` ` (only one input)
 
-Valid inputs must have a positive integer less or equal the numbers of column as first value, a positive integer less or equal to the number of rows as second value, and either the letter `R` or `F` (capitalized) as the last input. Inputs that specify any other value is invalid.
+Not only the input format matters, but also the values provided by the player.
+Valid inputs must have a positive integer less or equal the numbers of rows as first value, a positive integer less or equal to the number of columns as second value, and either the letter `R` or `F` (capitalized) as the last input. Inputs that do not met those constraints are invalid and must be reported with the message: `The provided input is not valid!`
 
 Assuming a 3x3 board, the following inputs are invalid:
 
- `1`` ``1`` ``f`
+ `1`` ``1`` ``f` (non capitalized R)
  
- `1`` ``5`` ``R`
+ `1`` ``5`` ``R` (5 is invalid as the board contains only 3 columns)
+
+ `-1`` ``1`` ``F` (-1 is not positive)
  
- `-1`` ``1`` ``F`
+  `1.0`` ``1`` ``F` (1.0 is not integer)
  
-  `1.0`` ``1`` ``F`
- 
+## Examples of games
+This section exemplifies how the game develops.
+
+### Simple game (win case)
+
+We start the game by pointing it to the board configuration. Assume the following configuration for the board stored in a file called `simple.cfg`. Note that there is only one mine.
+
+```
+..*[\n]
+...[\n]
+...[\n]
+```
+
+For the java implementation, invoking the program looks like this:
+
+```
+java Minesweeper simple.cfg
+```
+
+For the javascript implementation, invoking the program looks like this:
+
+```
+node minesweeper.js simple.cfg
+```
+
+After starting the program, we should see the following output on the console:
+
+```
+┌───┬───┬───┐[\n]
+│   │   │   │[\n]
+├───┼───┼───┤[\n]
+│   │   │   │[\n]
+├───┼───┼───┤[\n]
+│   │   │   │[\n]
+└───┴───┴───┘[\n]
+╔═══════════╗[\n]
+║           ║[\n]
+╚═══════════╝[\n]
+>
+```
+
+At this point, we input ` ``1`` ``1`` R` to reveal the top left corner. 
+This causes the GUI to refresh and we obtain:
+
+```
+┌───┬───┬───┐[\n]
+│ ▓ │ 1 │   │[\n]
+├───┼───┼───┤[\n]
+│ ▓ │ 1 │ 1 │[\n]
+├───┼───┼───┤[\n]
+│ ▓ │ ▓ │ ▓ │[\n]
+└───┴───┴───┘[\n]
+╔═══════════╗[\n]
+║You Won!   ║[\n]
+╚═══════════╝[\n]
+```
+
+What happened is that that squares closed by (1,1) do not contain a mines so they are automatically revealed (empty or with `1`). Because there are no more square left to uncover except the one that contain the mine, the game automatically ends. As the message says, the player won the game.
+
+> **NOTE**: Because the game ended, no additional inputs must be provided; hence the input console is NOT shown.
+
+
+### Simple game (lost case)
+
+We start the game using the same `simple.cfg` used before, but this time we provide `1`` ``3`` R` as first input to reveal the top right corner.
+Since the square contains the mine, we lost the game and the program shows the  following output.
+
+```
+┌───┬───┬───┐[\n]
+│   │   │ * │[\n]
+├───┼───┼───┤[\n]
+│   │   │   │[\n]
+├───┼───┼───┤[\n]
+│   │   │   │[\n]
+└───┴───┴───┘[\n]
+╔═══════════╗[\n]
+║You Lost!  ║[\n]
+╚═══════════╝[\n]
+```
+
+Once again, since the game is over, the input console is not shows anymore. 
+Since the game is lost, all the mines (in this case only one) are shown on the board.
 
 ## Corner cases, Exceptions, and the like
+
+### Invalid board configuration
+If the configuration file is not present, or the file does not contain a valid board definition, the program must end with an error.
+If the file is missing, the exit code must be `1`; if the file is not valid, the exit code is `2`.
+
+An empty configuration file is considered as a non valid file, so the exit code must be `2`. Other invalid files are files that contains characters different from `.` and `*`, or files that do not correspond to rectangular boards. Spaces are NOT allowed in the board configuration files.
+
+Not exception message must be raised !
+
+### Additional  cases
+In general, additional corner cases might exist. If you find some, please list them here. Ideally, you can define public tests which capture the corner cases, so all the other students can update their code (and you can get bonus points!!)
+
