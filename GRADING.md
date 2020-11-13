@@ -33,6 +33,8 @@ Be sure that your submissions passes **ALL** the public tests on the continuous 
 
 Public tests can be found at [https://github.com/se2p/ps-wise-2021-public-tests](https://github.com/se2p/ps-wise-2021-public-tests)
 
+> **NOTE**: a valid submission must also provide a `WHOAMI.md` file (in the root of the project) that contains your main data (name, lastname, matriculation, etc.)
+
 ### Private tests
 In addition to public tests, students submission are executed against a set of private tests. Correct solutions should pass all the private tests as well; however, solutions that do not pass all the private tests will not be considered completely invalid, so they will not be rejected by default. Depending on how many private tests fail, student solutions will lose more or less points. 
 
@@ -51,7 +53,10 @@ So if students commit their code frequently, they will received a feedback from 
 
 
 ## Code comments and solution description
-Student submission must respect **all** the constraints defined by the target programming styles; however, it might not be always possible to do so. To avoid any confusion and misunderstanding, the students must reasonably comment their code and provide the necessary details on the description of their solution (`DESCRIPTION.md`).
+Student submission must respect **all** the constraints defined by the target programming styles; however, it might not be always possible to do so. To avoid any confusion and misunderstanding, the students must reasonably comment their code and provide the necessary details on the description of their solution. 
+
+> **NOTE**: Each task must be described *separately*, so please commit a `DESCRIPTION.md` file for the java solution (under `./java`) and another one for the javascript solution (under `./javscript`)
+
 The difference between code comments and solution description is that code comments are *punctual and localized*, as they apply exactly on the code they are applied on. The solution description, instead, is *general* and describe the approach to the solution and its most relevant points.
 
 Code comments and solution description help in understanding the reasoning behind students' programs and, more importantly, explain (potential) style violations. Note that the default behavior in the absence of suitable code comments or a sound description is to consider any solution that violate the programming styles as wrong.
