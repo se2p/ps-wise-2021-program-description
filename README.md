@@ -304,6 +304,27 @@ Since the game is lost, all the mines (in this case only one) are shown on the b
 
 ## Corner cases, Exceptions, and the like
 
+### Invalid File Names
+Any existing file which does not match the following pattern: `<NAME>.cfg` must be considered invalid; hence, *Misesweeper* must exit with exit code is `2`. `<NAME>` must be a valid file name (so no special characters and such).
+
+**CaSeS dO nOt MaTtEr**. So a file named `<NAME>.CFG` is as good as a file named `<NAME>.CfG`.
+
+Examples of invalid file names are:
+
+* `.cfg` this file does not have the `<NAME>` part, so it is invalid
+* `<NAME>`, `<NAME>.` those files do not have a valid extension
+* `<NAME>.ccfg`, `<NAME>.blabla`, `<NAME>.foo` are not valid because they have the wrong extension
+
+Example of valid file names are (If you do not agree with this, open an issue on GitHub):
+
+* `<NAME_WITHOUT_SPACES>.cfg` is valid
+* `<NAME WITH SPACES>.cfg` is valid, but tricky
+* `<NAME>..cfg` is valid, because `.` does not invalidate `<NAME>`.
+* `<NAME_WITH_AN_ENDING_DOT>.cfg` is just the one above made (hopefully) more clear
+
+
+
+
 ### Invalid board configuration
 If the configuration file is not present, or the file does not contain a valid board definition, the program must end with an error.
 If the file is missing, the exit code must be `1`; if the file is not valid, the exit code is `2`.
