@@ -6,7 +6,7 @@ In each assignment, you are asked to complete two programming tasks, one in Java
 
 Programming tasks are evaluated in terms of their correctness, adherence to the various programming styles, general organization, code quality and clarity in the code comments. The description is evaluated in clarity, organization, and soundness.
 
-Students have the responsibility to identify, reports and possibly fix problems and shortcomings in the assignments' material. Additional **bonus** points can be earned by the students that contribute to the class by implementing additional public tests, improving documentation, task descriptions, and, in general, sharing anything that can be useful to the other students dealing with the assignments. Sharing the solution of the assignments is, of course, not possible.
+Students have the responsibility to identify, report and possibly fix problems and shortcomings in the assignments' material. Additional **bonus** points can be earned by the students that contribute to the class by implementing additional public tests, improving documentation, task descriptions, and, in general, sharing anything that can be useful to the other students dealing with the assignments. Sharing the solution of the assignments is, of course, not possible.
 
 ## Plagiarism
 All the submissions undergo a plagiarism check that consists of manual code inspection and the use of standard software for plagiarism checking. Depending on the severity of the situation, plagiarism is punishable with class failure, or the loss of all the points of the assignments.
@@ -29,7 +29,7 @@ The automated testing infrastructure will use the make script to clean up, rebui
 ## Valid submissions
 
 ### Public tests
-Be sure that your submissions passes **ALL** the public tests on the continuous integration system. Submissions that do not pass **ALL** the public tests on the continuous integration system will not be considered valid, i.e., you will give zero points. That is, even if your solution passes the public tests on your local installation, it will still be considered wrong if it does not pass the tests on the automated testing infrastructure.
+Be sure that your submissions passes **ALL** the public tests on the continuous integration system. Submissions that do not pass **ALL** the public tests on the continuous integration system will not be considered valid, i.e., you will be given zero points. That is, even if your solution passes the public tests on your local installation, it will still be considered wrong if it does not pass the tests on the automated testing infrastructure.
 
 Public tests can be found at [https://github.com/se2p/ps-wise-2021-public-tests](https://github.com/se2p/ps-wise-2021-public-tests)
 

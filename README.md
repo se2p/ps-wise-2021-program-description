@@ -23,7 +23,7 @@ The objective of the game is to clear **a rectangular board** containing hidden 
 
 If the player selects a square containing a bomb, the game is over and the player has lost it. Otherwise, if the player manages to select all the squares (without clicking on any bombs), the game is won.
 
-In some versions of Minesweeper, the first move is "protected," that is the boards are set up by never placing a mine on the first square revealed. For the assignment, we do not implement such a rule. The initial board is "empty" and it does not matter whether or not the players detonates a mine after the first move. 
+In some versions of Minesweeper, the first move is "protected," that is the boards are set up by never placing a mine on the first square revealed. For the assignment, we do not implement such a rule. It does not matter whether the player detonates a mine after the first move or the subsequent moves. 
 
 
 ### Game Setup
@@ -33,8 +33,8 @@ The program takes **ONLY** this file as input parameter.
 The file must follow this format:
 1. It must contain only text. The number of lines identifies the height of the board while the length of the lines identify its width.
 2. Each line follows this format: a `.` indicates an empty square, a `*` identifies a mine. No other characters (except new line [\n]) shall be present in this file.
-2. There are no empty lines. 
-3. All the lines must have the same length and must be terminated by [\n].
+3. There are no empty lines (except for the last line). 
+4. All the lines must have the same length and must be terminated by [\n].
 
 A valid file defining a 3x3 board containing 2 mines might look like this:
 
@@ -171,7 +171,7 @@ Putting the elements of the GUI all together results and assuming an 3x3 initial
 
 ### Extended ASCII
 
-Note that to generate the GUI you do not need necessary to use the extended ASCII characters if you can use other encodings.
+Note that to generate the GUI you do not need necessarily to use the extended ASCII characters if you can use other encodings.
 
 Please read this [StackOverflow question](https://stackoverflow.com/questions/22273046/how-to-print-the-extended-ascii-code-in-java-from-integer-value). 
 
@@ -211,7 +211,7 @@ Valid inputs must have a positive integer less or equal the numbers of rows as f
 
 Assuming a 3x3 board, the following inputs are invalid:
 
- `1`` ``1`` ``f` (non capitalized R)
+ `1`` ``1`` ``f` (non capitalized F)
  
  `1`` ``5`` ``R` (5 is invalid as the board contains only 3 columns)
 
@@ -276,7 +276,7 @@ This causes the GUI to refresh and we obtain:
 ╚═══════════╝[\n]
 ```
 
-What happened is that that squares closed by (1,1) do not contain a mines so they are automatically revealed (empty or with `1`). Because there are no more square left to uncover except the one that contain the mine, the game automatically ends. As the message says, the player won the game.
+What happened is that that squares closed by (1,1) do not contain a mine so they are automatically revealed (empty or with `1`). Because there are no more square left to uncover except the one that contain the mine, the game automatically ends. As the message says, the player won the game.
 
 > **NOTE**: Because the game ended, no additional inputs must be provided; hence the input console is NOT shown.
 
@@ -310,7 +310,7 @@ If the file is missing, the exit code must be `1`; if the file is not valid, the
 
 An empty configuration file is considered as a non valid file, so the exit code must be `2`. Other invalid files are files that contains characters different from `.` and `*`, or files that do not correspond to rectangular boards. Spaces are NOT allowed in the board configuration files.
 
-Not exception message must be raised !
+No exception message must be raised !
 
 ### Additional  cases
 In general, additional corner cases might exist. If you find some, please list them here. Ideally, you can define public tests which capture the corner cases, so all the other students can update their code (and you can get bonus points!!)
