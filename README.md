@@ -51,18 +51,17 @@ The board configuration files must have the `.cfg` extension.
 
 ### Playing the game
 
-The game is usually played using the mouse to click **covered** squares that don't contain mines (left button) and flag squares that potentially contain mines (right button). For the assignment, **we do not rely on mouse, but input the coordinates of the block we intent to click and the action to perform `R` for reveal and `F` for flag**. Clicking squares that have been already uncovered does not cause any change in the game.
+The game is usually played using the mouse. The left mouse button is used to uncover (or reveal) **covered** squares, while the right mouse button is used to flag **covered** squares that potentially contain mines. For the assignment, **we do not rely on mouse, but input the coordinates of the block we intent to click and the action to perform `R` for reveal and `F` for flag**. Clicking or flagging squares that have been already uncovered does not cause any change in the game, i.e., the GUI is refreshed but does not change its content.
 
 In the following, "(left-)click" means *input the coordinate of the square with action `R`*, while "flag" means *input the coordinate of the square with action `F`*.
 
-A player left-clicks a square to **uncover** it. If a player uncovers a mine, the mine detonates, and the game is lost. Otherwise, the uncovered squares displays either a number, indicating the quantity of mines adjacent to it, or a blank tile. All the adjacent **covered** and empty squares are automatically uncovered. Players' job is to use these numbers to figure out which of the **blank squares** have mines and which are safe to click.
+If a player uncovers a mine, the mine detonates, and the game is lost. Otherwise, the uncovered squares displays either a number, indicating the quantity of mines adjacent to it, or nothing if empty. All the adjacent **covered** squares are automatically uncovered if they are empty. Players' job is to use the numbers in the **uncovered** squares to figure out which of the remaining **covered** squares contain mines and which are safe to click.
 
-> **NOTE**: A squares' "neighbours" are the squares adjacent above, below, left, right, and all 4 diagonals. Squares on the sides of the board or in a corner have *fewer* neighbors. The board does not wrap around the edges.
+> **NOTE**: A squares' "neighbours" are the squares adjacent above, below, left, right, and all four diagonals. Squares on the sides of the board or in a corner have *fewer* neighbors. The board does not wrap around the edges.
 
-Right-clicking on a square will **flag** it, causing a flag (`¶`) to appear on it. Flagged squares are still **covered**, and a player can click on them to uncover them. There is not need to "unflag" squares to uncover them.
+Flagging a **covered** square will cause a flag symbol (`¶`) to appear on it. Flagged squares are still **covered**, hence players can left-click on them to uncover them. There is not need to "unflag" squares before uncovering them.
 
-So squares can be **covered**, **uncovered** and **flagged**.
-A covered square is blank and "clickable", while an uncovered square is exposed. Flagged squares are those marked by the player to indicate a potential mine location. Additionally, squares might be empty, contain a number, or a mine.
+So squares can be **covered** or **uncovered**. A covered square can be blank or flagged. An uncovered square can be empty, can contain a number, or can contain a mine.
 
 ### End of the Game
 
@@ -77,8 +76,10 @@ the message banner,
 and the console input. 
 
 ### The board 
-The board is a "box/table" aligned to the left (so no space on the left), made of cells. Each cell corresponds to a square. Squares are indexed starting from **(1,1)** on the top left corner to *(N,M)* on the bottom right corner. The first coordinate identifies the row, the second the column. The content of the cell is the central char:
-`*` identifies a mine, `1` (or any digit) is the number of mines in neighboring cells, `:nothing:` (is an uncovered square), `▓` is a covered-but-empty square, while `¶` is a flag.
+The board is a "box/table" aligned to the left (so no space on the left), made of cells. Each cell corresponds to a square. Squares are indexed starting from **(1,1)** on the top left corner to *(N,M)* on the bottom right corner. The first coordinate identifies the row, the second the column. The content of the cell is defined by the central character.
+For **covered** squares, the `¶` symbol indicates that they are flagged, while 
+`:nothing:` indicates that they are not flagged.
+For **uncovered**,  the `*` identifies a mine, `:digit:` is the number of mines in neighboring cells, while the `▓` symbol identified an empty square.
 
 An example of a 3x3 board with those symbols is show below:
 
@@ -92,7 +93,7 @@ An example of a 3x3 board with those symbols is show below:
 └───┴───┴───┘[\n]
 ```
 
-In the above board, the mine is in position `(1,1)`, the `1` is in position `(1,2)`, the `2` is in position `(2,3)`, the square in position `(3,2)` is empty (`▓`), while the square in position `(3,3)` is flagged. All the remaining squares are **uncovered**.
+In the above board, there is an **uncovered** square that contains a mine in position `(1,1)`, an  **uncovered** square that contains `1` in position `(1,2)` and another  **uncovered** square that contains `2` in position `(2,3)`. The square in position `(3,2)` is **uncovered** and empty (`▓`), while the square in position `(3,3)` is **covered** and flagged. All the remaining squares are **covered** and can be left- or right-clicked.
 
 > **NOTE**: The board above serves only as illustration, such a configuration would be not possible because a mine has been found.
 
