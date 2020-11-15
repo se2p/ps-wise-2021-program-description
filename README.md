@@ -56,9 +56,13 @@ The game is usually played using the mouse. The left mouse button is used to unc
 
 In the following, "(left-)click" means *input the coordinate of the square with action `R`*, while "flag" means *input the coordinate of the square with action `F`*.
 
-If a player uncovers a mine, the mine detonates, and the game is lost. Otherwise, the uncovered squares displays either a number, indicating the quantity of mines adjacent to it, or nothing if empty. All the adjacent **covered** squares are automatically uncovered if they are empty. Players' job is to use the numbers in the **uncovered** squares to figure out which of the remaining **covered** squares contain mines and which are safe to click.
+If a player uncovers a mine, the mine detonates, and the game is lost. Otherwise, the uncovered squares displays either a number, indicating the quantity of mines adjacent to it, or nothing if empty. After left-clicking a square, all its "neighbors" **covered** squares are automatically uncovered if they are empty. 
+Players' job is to use the numbers in the **uncovered** squares to figure out which of the remaining **covered** squares contain mines and which are safe to click.
 
-> **NOTE**: A squares' "neighbours" are the squares adjacent above, below, left, right, and all four diagonals. Squares on the sides of the board or in a corner have *fewer* neighbors. The board does not wrap around the edges.
+> **NOTE**: A squares' "neighbors" are the squares adjacent above, below, left, right, and all four diagonals. Squares on the sides of the board or in a corner have *fewer* neighbors. The board does not wrap around the edges.
+
+> **NOTE**: If the player uncovers a square with 0 neighboring bombs, all its neighbors will automatically uncovered. This may cause a large area to automatically open, and in some cases to win the game after a single move.
+
 
 Flagging a **covered** square will cause a flag symbol (`¶`) to appear on it. Flagged squares are still **covered**, hence players can left-click on them to uncover them. There is not need to "unflag" squares before uncovering them.
 
