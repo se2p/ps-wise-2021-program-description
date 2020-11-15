@@ -52,9 +52,11 @@ The board configuration files must have a `name` and the `.cfg` extension (see m
 
 ### Playing the game
 
-The game is usually played using the mouse. The left mouse button is used to uncover (or reveal) **covered** squares, while the right mouse button is used to flag **covered** squares that potentially contain mines. For the assignment, **we do not rely on mouse, but input the coordinates of the block we intent to click and the action to perform `R` for reveal and `F` for flag**. Clicking or flagging squares that have been already uncovered does not cause any change in the game, i.e., the GUI is refreshed but does not change its content.
+The game is usually played using the mouse. The left mouse button is used to uncover (or reveal) **covered** squares, while the right mouse button is used to flag **covered** squares that potentially contain mines. 
 
-In the following, "(left-)click" means *input the coordinate of the square with action `R`*, while "flag" means *input the coordinate of the square with action `F`*.
+For the assignment, **we do not rely on mouse, but input the coordinates of the block we intent to click and the action to perform `R` for reveal and `F` for flag**. Clicking or flagging squares that have been already **uncovered** does not cause any change in the game and its GUI. Nevertheless, the GUI must be refreshed, as a consequence to process the input.
+
+In the following, "(left-)click" means *input the coordinate of the square with action `R`*, while "flag" or "(right)-click" mean *input the coordinate of the square with action `F`*.
 
 If a player uncovers a mine, the mine detonates, and the game is lost. Otherwise, the uncovered squares displays either a number, indicating the quantity of mines adjacent to it, or nothing if empty. After left-clicking a square, all its "neighbors" **covered** squares are automatically uncovered if they are empty. 
 Players' job is to use the numbers in the **uncovered** squares to figure out which of the remaining **covered** squares contain mines and which are safe to click.
@@ -63,8 +65,11 @@ Players' job is to use the numbers in the **uncovered** squares to figure out wh
 
 > **NOTE**: If the player uncovers a square with 0 neighboring bombs, all its neighbors will automatically uncovered. This may cause a large area to automatically open, and in some cases to win the game after a single move.
 
+Flagging a **covered** square will cause a flag symbol (`¶`) to appear on it. 
 
-Flagging a **covered** square will cause a flag symbol (`¶`) to appear on it. Flagged squares are still **covered**, hence players can left-click on them to uncover them. There is not need to "unflag" squares before uncovering them.
+> **NOTE**: right-clicking a **covered** square toggles the flag symbol on it. So, if the square is not flagged, right-clicking it will make the flag symbol appear. Otherwise, if the square is already flagged, right-clicking it will make the flag symbol disappear.
+
+Flagged squares are still **covered**, hence players can left-click on them to uncover them. There is not need to "unflag" squares before uncovering them. Additionally, the is not predefined limit on the number of flags that can be used. So in theory a player can flag all the **covered** squares.
 
 So squares can be **covered** or **uncovered**. A covered square can be blank or flagged. An uncovered square can be empty, can contain a number, or can contain a mine.
 
