@@ -45,7 +45,7 @@ A valid file defining a 3x3 board containing 2 mines might look like this:
 ```
 
 Valid boards must have more than one square, and do not contain only mines.
-However, a board **without mines** is a valid board, provided the other constraints on symbols and shape are met.
+However, a board **without mines** is a valid board, provided the other constraints on symbols and shape are met. To clarify, a valid board can have zero or more mines, but it cannot have all the squares filled with mines.
 
 The board configuration files must have a `name` and the `.cfg` extension (see more details in the "Invalid File Names" section).
 
