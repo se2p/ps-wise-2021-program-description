@@ -19,7 +19,7 @@ In the initial assignments, you'll be asked to implement a basic version of the 
 
 ## Goal and Rules of the Game
 
-The objective of the game is to clear **a rectangular board** containing hidden "mines" or bombs without detonating any of them. The players can make use of clues about the number of neighboring mines in each field. So a number on a block indicates how many mines are around that block. For example, if there are two squares touching each other and one of the squares has "1" on it, you know that the square next to it has a mine beneath it.
+The objective of the game is to clear **a rectangular board** containing hidden "mines" or bombs without detonating any of them. The players can make use of clues about the number of neighboring mines in each field. So a number on a square indicates how many mines are around that square. For example, if there are two squares touching each other and one of the squares has "1" on it, you know that the square next to it has a mine beneath it.
 
 If the player selects a square containing a bomb, the game is over and the player has lost it. Otherwise, if the player manages to select all the squares (without clicking on any bombs), the game is won.
 
@@ -45,7 +45,7 @@ A valid file defining a 3x3 board containing 2 mines might look like this:
 ```
 
 Valid boards must have more than one square, and do not contain only mines.
-However, a board **without mines** is a valid board, provided the other constraints on symbols and shape are met.
+However, a board **without mines** is a valid board, provided the other constraints on symbols and shape are met. To clarify, a valid board can have zero or more mines, but it cannot have all the squares filled with mines.
 
 The board configuration files must have a `name` and the `.cfg` extension (see more details in the "Invalid File Names" section).
 
@@ -100,11 +100,13 @@ So valid boards cannot have columns or rows greater than "20" squares.
 └───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┘[\n]
 ```
 
+> **Note**: boards of size '1 x 20' and '20 x 1' are valid, despite they might not be that interesting to play.
+
 ### Playing the game
 
 The game is usually played using the mouse. The left mouse button is used to uncover (or reveal) **covered** squares, while the right mouse button is used to flag **covered** squares that potentially contain mines. 
 
-For the assignment, **we do not rely on mouse, but input the coordinates of the block we intent to click and the action to perform `R` for reveal and `F` for flag**. Clicking or flagging squares that have been already **uncovered** does not cause any change in the game and its GUI. Nevertheless, the GUI must be refreshed, as a consequence to process the input.
+For the assignment, **we do not rely on mouse, but input the coordinates of the square we intent to click and the action to perform `R` for reveal and `F` for flag**. Clicking or flagging squares that have been already **uncovered** does not cause any change in the game and its GUI. Nevertheless, the GUI must be refreshed, as a consequence to process the input.
 
 In the following, "(left-)click" means *input the coordinate of the square with action `R`*, while "flag" or "(right)-click" mean *input the coordinate of the square with action `F`*.
 
@@ -168,7 +170,9 @@ Here are some specifications of the boards:
 * Each line is terminated by `\n` and there are no spaces before or after it
 
 ### The message banner
-During the game, Minesweeper might output messages to the player. For example, if the provided input is invalid, or the game is over. Messages are displayed inside the message banner, which is positioned below the board. 
+During the game, Minesweeper might output messages to the player. For example, if the provided input is invalid, or the game is over. Messages are displayed inside the message banner, which is positioned below the board.
+
+> **NOTE**: There are no empty lines between the board and the message banner.
 
 ```
 ┌───┬───┬───┐[\n]
@@ -183,7 +187,7 @@ During the game, Minesweeper might output messages to the player. For example, i
 ╚═══════════╝[\n]
 ```
 
-Both the message banner and the messages are left justified (no spaces on the left). The message banner must stretch to fit all the messages on one line and  cannot be shorter than the board itself.
+Both the message banner and the messages are left justified (no spaces on the left). The message banner must stretch to fit all the messages on one line and cannot be shorter than the board itself.
 
 An example of short message when the player wins the game is:
 
@@ -207,7 +211,7 @@ As you might have noted, there is not space also on the right side of the messag
 
 ### Console Input
 
-The console input starts with the char `>` (yes exactly this character!) and it is not terminated by a newline.
+The console input starts with the char `>` (yes exactly this character!), and it is not terminated by a newline.
 
 ```
 >
