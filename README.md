@@ -19,7 +19,7 @@ In the initial assignments, you'll be asked to implement a basic version of the 
 
 ## Goal and Rules of the Game
 
-The objective of the game is to clear **a rectangular board** containing hidden "mines" or bombs without detonating any of them. The players can make use of clues about the number of neighboring mines in each field. So a number on a block indicates how many mines are around that block. For example, if there are two squares touching each other and one of the squares has "1" on it, you know that the square next to it has a mine beneath it.
+The objective of the game is to clear **a rectangular board** containing hidden "mines" or bombs without detonating any of them. The players can make use of clues about the number of neighboring mines in each field. So a number on a square indicates how many mines are around that square. For example, if there are two squares touching each other and one of the squares has "1" on it, you know that the square next to it has a mine beneath it.
 
 If the player selects a square containing a bomb, the game is over and the player has lost it. Otherwise, if the player manages to select all the squares (without clicking on any bombs), the game is won.
 
@@ -104,7 +104,7 @@ So valid boards cannot have columns or rows greater than "20" squares.
 
 The game is usually played using the mouse. The left mouse button is used to uncover (or reveal) **covered** squares, while the right mouse button is used to flag **covered** squares that potentially contain mines. 
 
-For the assignment, **we do not rely on mouse, but input the coordinates of the block we intent to click and the action to perform `R` for reveal and `F` for flag**. Clicking or flagging squares that have been already **uncovered** does not cause any change in the game and its GUI. Nevertheless, the GUI must be refreshed, as a consequence to process the input.
+For the assignment, **we do not rely on mouse, but input the coordinates of the square we intent to click and the action to perform `R` for reveal and `F` for flag**. Clicking or flagging squares that have been already **uncovered** does not cause any change in the game and its GUI. Nevertheless, the GUI must be refreshed, as a consequence to process the input.
 
 In the following, "(left-)click" means *input the coordinate of the square with action `R`*, while "flag" or "(right)-click" mean *input the coordinate of the square with action `F`*.
 
