@@ -100,6 +100,8 @@ So valid boards cannot have columns or rows greater than "20" squares.
 └───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┘[\n]
 ```
 
+> **Note**: boards of size '1 x 20' and '20 x 1' are valid, despite they might not be that interesting to play.
+
 ### Playing the game
 
 The game is usually played using the mouse. The left mouse button is used to uncover (or reveal) **covered** squares, while the right mouse button is used to flag **covered** squares that potentially contain mines. 
