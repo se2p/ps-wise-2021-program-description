@@ -170,7 +170,9 @@ Here are some specifications of the boards:
 * Each line is terminated by `\n` and there are no spaces before or after it
 
 ### The message banner
-During the game, Minesweeper might output messages to the player. For example, if the provided input is invalid, or the game is over. Messages are displayed inside the message banner, which is positioned below the board. 
+During the game, Minesweeper might output messages to the player. For example, if the provided input is invalid, or the game is over. Messages are displayed inside the message banner, which is positioned below the board.
+
+> **NOTE**: There are no empty lines between the board and the message banner.
 
 ```
 ┌───┬───┬───┐[\n]
@@ -185,7 +187,7 @@ During the game, Minesweeper might output messages to the player. For example, i
 ╚═══════════╝[\n]
 ```
 
-Both the message banner and the messages are left justified (no spaces on the left). The message banner must stretch to fit all the messages on one line and  cannot be shorter than the board itself.
+Both the message banner and the messages are left justified (no spaces on the left). The message banner must stretch to fit all the messages on one line and cannot be shorter than the board itself.
 
 An example of short message when the player wins the game is:
 
@@ -209,7 +211,7 @@ As you might have noted, there is not space also on the right side of the messag
 
 ### Console Input
 
-The console input starts with the char `>` (yes exactly this character!) and it is not terminated by a newline.
+The console input starts with the char `>` (yes exactly this character!), and it is not terminated by a newline.
 
 ```
 >
