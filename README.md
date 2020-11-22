@@ -122,7 +122,7 @@ Flagging a **covered** square will cause a flag symbol (`¶`) to appear on it.
 
 > **NOTE**: right-clicking a **covered** square toggles the flag symbol on it. So, if the square is not flagged, right-clicking it will make the flag symbol appear. Otherwise, if the square is already flagged, right-clicking it will make the flag symbol disappear.
 
-Flagged squares are still **covered**, hence players can left-click on them to uncover them. There is not need to "unflag" squares before uncovering them. Additionally, the is not predefined limit on the number of flags that can be used. So in theory a player can flag all the **covered** squares.
+Flagged squares are still **covered**, hence players can left-click on them to uncover them. There is not need to "unflag" squares before uncovering them. Additionally, there is not predefined limit on the number of flags that can be used. So in theory a player can flag all the **covered** squares.
 
 So squares can be **covered** or **uncovered**. A covered square can be blank or flagged. An uncovered square can be empty, can contain a number, or can contain a mine.
 
