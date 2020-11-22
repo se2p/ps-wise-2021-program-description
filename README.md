@@ -373,6 +373,8 @@ Since the game is lost, all the mines (in this case only one) are shown on the b
 ### Invalid File Names
 Any existing file which does not match the following pattern: `<NAME>.cfg` must be considered invalid; hence, *Misesweeper* must exit with exit code is `2`. `<NAME>` must be a valid file name (so no special characters and such).
 
+**File name has priority over file exists**. *Misesweeper* should check the validity of the input parameter (as String) even before checking the validity of the file. So if an invalid file name is provided, no matter whether the file exists on not, the exit code is `2` (invalid file) and not exit code `1` missing file.
+
 **Folders with right name**. A folder with a valid name (`<NAME>.cfg`) is considered as an invalid file if it exists; therefore, *Misesweeper* must exit with exit code is `2`.
 Otherwise, if the folder has a valid naem, but does not exist, *Misesweeper* must exit with exit code is `1`.
 
