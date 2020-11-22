@@ -28,7 +28,8 @@ In some versions of Minesweeper, the first move is "protected," that is the boar
 
 ### Game Setup
 Each game starts with  **a rectangular board** of **unmarked squares**. Some contains mines others do not. The size of the board and the number and placement of the mines are specified in a text file passed as input parameter.
-The program takes **ONLY** this file as input parameter.
+The program takes **ONLY** this file as input parameter. If more than one input parameter is provided, only the first one
+is considered, the remaining ones are ignored.
 
 The file must follow this format:
 1. It must contain only text. The number of lines identifies the height of the board while the length of the lines identify its width.
@@ -164,9 +165,9 @@ Here are some specifications of the boards:
 * The height of each square is 3 line
 * The width of each square is 3 chars
 * Nearby squares share borders
-* An uncovered square is "empty"
+* A covered square is "empty"
 * An flanges square contains a flag `¶`
-* Covered squares contain a shaded cell `▓` unless it contains a mine (`*`) or a digit
+* Uncovered squares contain a shaded cell `▓` unless it contains a mine (`*`) or a digit
 * Each line is terminated by `\n` and there are no spaces before or after it
 
 ### The message banner
@@ -395,6 +396,7 @@ If the configuration file is not present, or the file does not contain a valid b
 If the file is missing, the exit code must be `1`; if the file is not valid, the exit code is `2`.
 
 An empty configuration file is considered as a non valid file, so the exit code must be `2`. Other invalid files are files that contains characters different from `.` and `*`, or files that do not correspond to rectangular boards. Spaces are NOT allowed in the board configuration files.
+Furthermore, an IOException, which is possibly thrown by a file reader, also results in exit code `2`.
 
 No exception message must be raised !
 
