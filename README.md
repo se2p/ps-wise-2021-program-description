@@ -48,7 +48,7 @@ A valid file defining a 3x3 board containing 2 mines might look like this:
 Valid boards must have more than one square, and do not contain only mines.
 However, a board **without mines** is a valid board, provided the other constraints on symbols and shape are met. To clarify, a valid board can have zero or more mines, but it cannot have all the squares filled with mines.
 
-The board configuration files must have a `name` and the `.cfg` extension (see more details in the "Invalid File Names" section).
+The board configuration files must have a `name` and the `.cfg` extension (see more details in the "Invalid Filenames" section).
 
 
 #### Maximum Board Size
@@ -426,10 +426,10 @@ Next, as after then second move `1 3 R`, the game ends, both the mines are shown
 
 ## Corner cases, Exceptions, and the like
 
-### Invalid File Names
+### Invalid Filenames
 Any existing file which does not match the following pattern: `<NAME>.cfg` must be considered invalid; hence, *Misesweeper* must exit with exit code is `2`. `<NAME>` must be a valid file name (so no special characters and such).
 
-**File name has priority over file exists**. *Misesweeper* should check the validity of the input parameter (as String) even before checking the validity of the file. So if an invalid file name is provided, no matter whether the file exists on not, the exit code is `2` (invalid file) and not exit code `1` missing file.
+**Filename has priority over file exists**. *Minesweeper* should check the validity of the input parameter (as String) even before checking the existence of the file and validating its content. So if an invalid filename is provided, no matter whether the file exists on not, the exit code is `2` (invalid file) and not exit code `1` (missing file)
 
 **Folders with right name**. A folder with a valid name (`<NAME>.cfg`) is considered as an invalid file if it exists; therefore, *Misesweeper* must exit with exit code is `2`.
 Otherwise, if the folder has a valid naem, but does not exist, *Misesweeper* must exit with exit code is `1`.
