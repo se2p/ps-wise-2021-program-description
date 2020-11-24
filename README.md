@@ -122,7 +122,7 @@ Flagging a **covered** square will cause a flag symbol (`¶`) to appear on it.
 
 > **NOTE**: right-clicking a **covered** square toggles the flag symbol on it. So, if the square is not flagged, right-clicking it will make the flag symbol appear. Otherwise, if the square is already flagged, right-clicking it will make the flag symbol disappear.
 
-Flagged squares are still **covered**, hence players can left-click on them to uncover them. There is not need to "unflag" squares before uncovering them. Additionally, there is not predefined limit on the number of flags that can be used. So in theory a player can flag all the **covered** squares.
+Flagged squares are still **covered**, hence players can left-click on them to uncover them. There is no need to "unflag" squares before uncovering them. Additionally, there is no predefined limit on the number of flags that can be used. So in theory a player can flag all the **covered** squares.
 
 So squares can be **covered** or **uncovered**. A covered square can be blank or flagged. An uncovered square can be empty, can contain a number, or can contain a mine.
 
@@ -407,4 +407,3 @@ No exception message must be raised !
 
 ### Additional  cases
 In general, additional corner cases might exist. If you find some, please list them here. Ideally, you can define public tests which capture the corner cases, so all the other students can update their code (and you can get bonus points!!)
-
