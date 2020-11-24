@@ -285,6 +285,18 @@ Assuming a 3x3 board, the following inputs are invalid:
  
   `1.0`` ``1`` ``F` (1.0 is not integer)
  
+### Additional inputs are ignored
+
+Since the program accepts inputs from the standard input one can try to feed the game with more inputs than necessary. If this happens, no matter the final state of the game (WON/LOST), all the additional inputs must be silently ignored.
+
+### No more inputs/no enough inputs
+
+If the user does not provide any more inputs, but the standard input is still open, the game does nothing. However, if the standard input is closed (for example, because we are testing the program); then, the program should end showing the following message:
+
+`Not enough inputs!`
+
+> **Note**: the behavior in this case is exactly the same as the win or lost game, except for the message displayed in the banner.
+ 
 ## Examples of games
 This section exemplifies how the game develops.
 
