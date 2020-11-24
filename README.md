@@ -366,7 +366,51 @@ Since the square contains the mine, we lost the game and the program shows the  
 ```
 
 Once again, since the game is over, the input console is not shows anymore. 
-Since the game is lost, all the mines (in this case only one) are shown on the board.
+Since the game is lost, all and only the mines (in this case only one) are shown on the board. The remaining squares are left untouched.
+
+To clarify this point, imagine the the following board configuration:
+
+```
+..*.....
+...*....
+........
+```
+
+After playing as first move `1 1 R`, the game computes following board (note that the console is *not* shown:
+
+```
+┌───┬───┬───┬───┬───┬───┬───┬───┐[\n]
+│ ▓ │ 1 │   │   │   │   │   │   │[\n]
+├───┼───┼───┼───┼───┼───┼───┼───┤[\n]
+│ ▓ │ 1 │ 2 │   │   │   │   │   │[\n]
+├───┼───┼───┼───┼───┼───┼───┼───┤[\n]
+│ ▓ │ ▓ │ 1 │   │   │   │   │   │[\n]
+└───┴───┴───┴───┴───┴───┴───┴───┘[\n]
+╔═══════════════════════════════╗[\n]
+║                               ║[\n]
+╚═══════════════════════════════╝[\n]
+```
+
+Next, as after then second move `1 3 R`, the game ends, both the mines are shown, and the appropriate message appears in the banner.
+
+```
+┌───┬───┬───┬───┬───┬───┬───┬───┐[\n]
+│ ▓ │ 1 │ * │   │   │   │   │   │[\n]
+├───┼───┼───┼───┼───┼───┼───┼───┤[\n]
+│ ▓ │ 1 │ 2 │ * │   │   │   │   │[\n]
+├───┼───┼───┼───┼───┼───┼───┼───┤[\n]
+│ ▓ │ ▓ │ 1 │   │   │   │   │   │[\n]
+└───┴───┴───┴───┴───┴───┴───┴───┘[\n]
+╔═══════════════════════════════╗[\n]
+║You Lost!                      ║[\n]
+╚═══════════════════════════════╝[\n]
+```
+
+
+
+
+> **NOTE**: Only the mines must be revealed, all the other squares remain untouched.
+
 
 ## Corner cases, Exceptions, and the like
 
