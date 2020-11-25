@@ -445,11 +445,10 @@ Examples of invalid file names are:
 Example of valid file names are (If you do not agree with this, open an issue on GitHub):
 
 * `<NAME_WITHOUT_SPACES>.cfg` is valid
-* `<NAME WITH SPACES>.cfg` is valid, but tricky
 * `<NAME>..cfg` is valid, because `.` does not invalidate `<NAME>`.
 * `<NAME_WITH_AN_ENDING_DOT>.cfg` is just the one above made (hopefully) more clear
 
-
+> **NOTE**: filenames containing spaces or file paths containing spaces are valid in theory, but since handling them is *tricky*, we assume that this never happens in practice. So both public and private tests always use filenames and file paths **without** spaces.
 
 
 ### Invalid board configuration
