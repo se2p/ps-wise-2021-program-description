@@ -388,7 +388,7 @@ To clarify this point, imagine the the following board configuration:
 ........
 ```
 
-After playing as first move `1 1 R`, the game computes following board (note that the console is *not* shown:
+After playing as first move `1 1 R`, the game computes following board (note that the console symbol `>` is *not* reported in the following figure for simplicity):
 
 ```
 ┌───┬───┬───┬───┬───┬───┬───┬───┐[\n]
