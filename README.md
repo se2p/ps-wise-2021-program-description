@@ -300,6 +300,13 @@ If the user does not provide any more inputs, but the standard input is still op
 
 > **Note**: the behavior, in this case, is the same as the win or lost game, except for the message displayed in the banner.
 
+### Do not clear the screen while refreshing the GUI
+
+When the GUI is plotted *Minesweeper* must not clear the screen, but simply output the new UI right after the previous one. The reasons are:
+
+1. Clearing the screen is more complex to implement than simply outputing the UI.
+2. Clearing the screen is harder to test, because it depends on many factors (including size of the screen, size of the board, etc.)
+
 ## Examples of games
 This section exemplifies how the game develops.
 
