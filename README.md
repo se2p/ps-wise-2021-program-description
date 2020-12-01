@@ -36,7 +36,7 @@ The file must follow this format:
 1. It must contain only text. The number of lines identifies the board's height, while the length of the lines identifies its width.
 2. Each line follows this format: a `.` indicates an empty square, a `*` identifies a mine. No other characters (except newline [\n]) shall be present in this file.
 3. There are no empty lines (except for the last line). 
-4. All the lines must have the same length and must be terminated by [\n].
+4. All the lines must have the same length and must be terminated by [\n] (**INCLUDING THE LAST ONE!**).
 
 A valid file defining a 3x3 board containing 2 mines might look like this:
 
@@ -45,6 +45,16 @@ A valid file defining a 3x3 board containing 2 mines might look like this:
 ...[\n]
 ..*[\n]
 ```
+
+A similar but non-valid file instead is:
+
+```
+..*[\n]
+...[\n]
+..*
+```
+
+This file is non-valid because it violates the constraint #4 (all lines must be terminated by '\n').
 
 Valid boards must have more than one square and do not contain only mines.
 However, a board **without mines** is valid, provided the other constraints on symbols and size hold. To clarify, a valid board can have zero or more mines, but it cannot have all the squares filled with mines.
