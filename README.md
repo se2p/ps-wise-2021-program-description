@@ -449,7 +449,7 @@ Any existing file which does not match the following pattern: `<NAME>.cfg` must 
 
 **Folders as inputs**. A folder with a valid name (`<NAME>.cfg`) is considered an invalid file *if it exists*; therefore, *Misesweeper* must exit with exit code `2`. Otherwise, if the folder has a valid name but does not exist, *Misesweeper* must exit with exit code `1`.
 
-**CaSeS dO nOt MaTtEr**. So a file named `<NAME>.CFG` is as good as a file named `<NAME>.CfG`.
+**CaSeS dO nOt MaTtEr**. When it comes to the file **extension**, the cases do not matter: a file named `<NAME>.CFG` is as good as a file named `<NAME>.CfG`.
 
 Examples of invalid file names are:
 
